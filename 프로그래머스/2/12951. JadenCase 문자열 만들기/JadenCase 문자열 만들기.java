@@ -1,18 +1,19 @@
-import java.util.*;
 class Solution {
     public String solution(String s) {
         String answer = "";
         String[] strArr = s.split(" ", -1);
-        
-        StringBuilder sb = new StringBuilder();
-        
-        for(int i=0; i<strArr.length; i++) {
-            if(strArr[i].length() > 0) {
-                sb.append(strArr[i].split("")[0].toUpperCase()).append(strArr[i].substring(1).toLowerCase()).append(" ");
+        for(int i=0; i<strArr.length; i++){
+            String str = strArr[i];
+            if(str.length() > 1){
+                str = str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
             } else {
-                sb.append(" ");
+                str = str.substring(0).toUpperCase();
             }
+            if(strArr.length - 1 != i) {
+                str += " ";
+            }
+            answer += str;
         }
-        return sb.substring(0, sb.length()-1).toString();
+        return answer;
     }
 }
