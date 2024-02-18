@@ -1,0 +1,18 @@
+SELECT 
+    UGB.TITLE -- 게시글 제목
+    , UGB.BOARD_ID -- 게시글 ID
+    , UGR.REPLY_ID -- 댓글 ID
+    , UGR.WRITER_ID -- 댓글 작성자 ID
+    , UGR.CONTENTS -- 댓글 내용
+    , TO_CHAR(UGR.CREATED_DATE, 'YYYY-MM-DD') AS CREATED_DATE -- 댓글 작성일
+FROM
+    USED_GOODS_BOARD UGB --중고거래 게시판 정보
+INNER JOIN
+    USED_GOODS_REPLY UGR --중고거래 게시판 첨부파일 정보
+ON 
+    UGB.BOARD_ID = UGR.BOARD_ID
+WHERE 
+    TO_CHAR(UGB.CREATED_DATE, 'YYYY-MM') = '2022-10'
+ORDER BY
+    UGR.CREATED_DATE ASC
+    , UGB.TITLE ASC
