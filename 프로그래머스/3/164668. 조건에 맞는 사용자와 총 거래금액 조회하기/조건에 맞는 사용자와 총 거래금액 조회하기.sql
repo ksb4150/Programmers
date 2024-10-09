@@ -6,10 +6,6 @@ FROM
         A.WRITER_ID, SUM(PRICE) AS PRICE
     FROM
         USED_GOODS_BOARD A
-    LEFT OUTER JOIN
-        USED_GOODS_USER B
-    ON
-        A.WRITER_ID = B.USER_ID
     WHERE
         A.STATUS = 'DONE'
     GROUP BY
